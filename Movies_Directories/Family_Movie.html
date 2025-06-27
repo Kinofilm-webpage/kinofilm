@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👨‍👩‍👧‍👦 От семьи не убежишь</title>
+    <link rel="icon" type="image/x-icon" href="../Images_Material/favicon.png">
+    <style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        box-sizing: border-box;
+        user-select: none;
+    }
+
+    :root {
+        --animation_duration: 128s;
+        --animation_objects: 34;
+    }
+
+    html {
+    scroll-behavior: smooth;
+    }
+
+    /* body {
+        background-color: rgb(65, 65, 65);
+    } */
+
+    body {
+        background-color: #171717;
+    }
+
+    /* Background Animation Layer */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 10% 25%, rgba(44, 171, 255, 0.125) 0%, transparent 20%),
+            radial-gradient(circle at 80% 90%, rgba(241, 49, 255, 0.09) 0%, transparent 40%);
+        z-index: -99;
+        animation: bg-pan 15s infinite alternate;
+        pointer-events: none;
+    }
+
+
+    /* Keyframes for Background Animation */
+    @keyframes bg-pan {
+        0% {
+            transform: scale(1);  
+            filter: contrast(0px);
+        }
+        100% {
+            transform: scale(1.4);
+            filter: contrast(24px);
+        }
+    }
+
+    .logo_title {
+        font-weight: 700;
+    }
+
+    .nav {
+        position: fixed;
+        z-index: 9;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(19, 19, 19, 0.465);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+        border-bottom: 1px solid whitesmoke; */
+        transition: 250ms all ease-in-out;
+    }
+
+    .nav.active {
+        background: rgb(31, 31, 31);
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+        border-bottom: 1px solid whitesmoke;
+    }
+
+    .nav a {
+        font-size: 22px;
+        color: white;
+        padding: 18px;
+        transition: 150ms all ease-in;
+        text-decoration: none;
+        user-select: none;
+    }
+
+    .nav a:hover {
+        background-color: rgb(80, 80, 80);
+    }
+
+    .menu {
+    display: none;
+    cursor: pointer;
+    margin-right: 24px;
+    transition: 250ms all linear;
+}
+
+    .menu:hover {
+        background-color: #3b3b3b4f;
+        border-radius: 22px;
+    }
+
+    .nav_mobile {
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        right: -225px;
+        height: 100%;
+        width: 225px;
+        background-color: rgb(26, 26, 26);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+        transition: 150ms all ease-in-out;
+        border-left: 1px solid whitesmoke;
+        overflow: hidden;
+    }
+
+    .nav_mobile::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 225px;
+        right: 0px;
+        height: 100%;
+        width: 225px;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(44, 171, 255, 0.125) 0%, transparent 30%),
+            radial-gradient(circle at 90% 80%, rgba(241, 49, 255, 0.125) 0%, transparent 40%);
+        z-index: -15;
+        animation: bg-pan 15s infinite alternate;
+    }
+
+    .nav_mobile.appear {
+        right: 0px;
+    }
+
+    .nav_links_mobile {
+        width: 100%;
+    }
+
+    .header_mobile_menu {
+        background-color: rgb(35, 35, 35);
+        font-weight: 700;
+    }
+
+    .nav_mobile a {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        font-size: 22px;
+        color: white;
+        padding: 18px;
+        transition: 150ms all ease-in;
+        text-decoration: none;
+        user-select: none;
+    }
+
+    .nav_mobile p {
+        font-size: 10px;
+        color: white;
+        margin-bottom: 8px;
+    }
+
+    .nav_mobile a:hover {
+        background-color: rgb(80, 80, 80);
+    }
+
+    .overlay_menu {
+        display: none;
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(20, 20, 20, 0.775);
+    }
+
+    .overlay_menu.appear {
+        display: block;
+    }
+
+    /* .movies-section {
+        margin-top: 24px;
+        padding: 48px;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .movie {
+        background-color: red;
+        position: relative;
+        height: 500px;
+        display: flex;
+        align-items: flex-end;
+        width: 325px;
+        font-size: 24px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+        transition: 250ms all ease-in;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .movie_player {
+        width: 800px;
+        max-width: 1000px;
+        min-width: 200px;
+        height: 500px;
+        margin-left: 45px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+        
+    }
+
+    .movie::before {
+        content: '"Боевик"';
+        position: absolute;
+        font-family: sans-serif;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px 12px;
+        background-color: #1d1d1dce;
+        color: white;
+        font-size: 18px;
+        z-index: 2;
+    }
+
+    .movie::after {
+        content: "Экшн | 120м";
+        position: absolute; 
+        font-family: sans-serif;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px 12px;
+        background-color: #1d1d1dce;
+        color: white;
+        font-size: 18px;
+        z-index: 2;
+    }
+
+    .movie:hover {
+        transform: scale(1.05);
+    } */
+
+    .movies-section {
+        margin-top: 24px;
+        padding: 48px;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+
+    .movie {
+        background-color: red;
+        position: relative;
+        width: 100%;
+        max-width: 325px;
+        aspect-ratio: 13 / 20; /* Replaces fixed height */
+        display: flex;
+        align-items: flex-end;
+        font-size: 24px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+        transition: 250ms all ease-in;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .movie::before {
+        content: '"Боевик"';
+        position: absolute;
+        font-family: sans-serif;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px 12px;
+        background-color: #1d1d1dce;
+        color: white;
+        font-size: 18px;
+        z-index: 2;
+    }
+
+    .movie::after {
+        content: "Экшн | 120м";
+        position: absolute;
+        font-family: sans-serif;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px 12px;
+        background-color: #1d1d1dce;
+        color: white;
+        font-size: 18px;
+        z-index: 2;
+    }
+
+    .movie:hover {
+        transform: scale(1.05);
+    }
+
+    .movie_player {
+        width: 100%;
+        max-width: 800px;
+        aspect-ratio: 16 / 9; /* Responsive video */
+        margin-left: 45px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+        height: 100%;
+    }
+
+    .scroll_track {
+        position: relative;
+        width: calc(175px * var(--animation_objects) + 100%); /* adjust for padding room */
+        height: 100%;
+    }
+
+
+    .scroll_menu {
+        width: 90%;
+        max-width: 2000px;
+        margin-inline: auto;
+        position: relative;
+        height: 350px;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        overflow-y: visible;
+        align-items: center;
+        mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 1) 80%,
+        rgba(0, 0, 0, 0)
+    );
+    }
+
+    @keyframes scrollLeft {
+    to {
+        left: -200px;
+    }
+    }
+
+    .movie_scroll {
+        width: 190px;
+        height: 290px;
+        background-color: red;
+        border-radius: 6px;
+        position: absolute;
+        top: 30px;
+        left: max(calc(200px * 8), 100%);
+        animation-name: scrollLeft;
+        transform-origin: center center;
+        animation-duration: var(--animation_duration);
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .movie_scroll.active {
+        transform: scale(1.05);
+    
+    }
+
+    .movie_scroll::before {
+        content: '"Боевик"';
+        position: absolute;
+        font-family: sans-serif;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px 12px;
+        background-color: #1d1d1dce;
+        color: white;
+        font-size: 18px;
+        z-index: 2;
+    }
+
+    .movie_scroll::after {
+        content: "Экшн | 120м";
+        position: absolute; 
+        font-family: sans-serif;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px 12px;
+        background-color: #1d1d1dce;
+        color: white;
+        font-size: 18px;
+        z-index: 2;
+    }
+
+
+    .movie_scroll1 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 1) * -1);
+    }
+
+    .movie_scroll2 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 2) * -1);
+    }
+
+    .movie_scroll3 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 3) * -1);
+    }
+
+    .movie_scroll4 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 4) * -1);
+    }
+
+    .movie_scroll5 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 5) * -1);
+    }
+
+    .movie_scroll6 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 6) * -1);
+    }
+
+    .movie_scroll7 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 7) * -1);
+    }
+
+    .movie_scroll8 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 8) * -1);
+    }
+
+
+    .movie_scroll9 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 9) * -1);
+    }
+
+    .movie_scroll10 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 10) * -1);
+    }
+
+    .movie_scroll11 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 11) * -1);
+    }
+
+    .movie_scroll12 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 12) * -1);
+    }
+
+    .movie_scroll13 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 13) * -1);
+    }
+
+    .movie_scroll14 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 14) * -1);
+    }
+
+    .movie_scroll15 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 15) * -1);
+    }
+
+    .movie_scroll16 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 16) * -1);
+    }
+
+    .movie_scroll17 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 17) * -1);
+    }
+
+    .movie_scroll18 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 18) * -1);
+    }
+
+    .movie_scroll19 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 19) * -1);
+    }
+
+    .movie_scroll20 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 20) * -1);
+    }
+
+    .movie_scroll21 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 21) * -1);
+    }
+
+    .movie_scroll22 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 22) * -1);
+    }
+
+    .movie_scroll23 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 23) * -1);
+    }
+
+    .movie_scroll24 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 24) * -1);
+    }
+
+    .movie_scroll25 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 25) * -1);
+    }
+
+    .movie_scroll26 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 26) * -1);
+    }
+
+    .movie_scroll27 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 27) * -1);
+    }
+
+    .movie_scroll28 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 28) * -1);
+    }
+
+    .movie_scroll29 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 29) * -1);
+    }
+
+    .movie_scroll30 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 30) * -1);
+    }
+
+    .movie_scroll31 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 31) * -1);
+    }
+
+    .movie_scroll32 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 32) * -1);
+    }
+
+    .movie_scroll33 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 33) * -1);
+    }
+
+    .movie_scroll34 {
+    animation-delay: calc(var(--animation_duration) / var(--animation_objects) * (var(--animation_objects) - 34) * -1);
+    }
+
+    .cars1_scroll {
+    background-image: url("../Images_Material/Cars.1.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;    
+    }
+
+    .cars1_scroll::before {
+        content: '"Тачки 1"';
+    }
+
+    .cars1_scroll::after {
+        content: "Мультфильм | 117м \A| 2006 год";
+        white-space: pre-wrap;
+        
+    }
+
+    .cars2_scroll {
+    background-image: url("../Images_Material/Cars.2.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .cars2_scroll::before {
+        content: '"Тачки 2"';
+    }
+
+    .cars2_scroll::after {
+        content: "Мультфильм | 106м \A| 2011 год";
+        white-space: pre-wrap;
+    }
+
+    .cars3_scroll {
+    background-image: url("../Images_Material/Cars.3.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .cars3_scroll::before {
+        content: '"Тачки 3"';
+    }
+
+    .cars3_scroll::after {
+        content: "Мультфильм | 109м \A| 2017 год";
+        white-space: pre-wrap;
+    }
+
+    .howToTrainDragon1_scroll {
+    background-image: url("../Images_Material/How.to.train.your.dragon.1.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .howToTrainDragon1_scroll::before {
+        content: '"Как приручить дракона 1"';
+    }
+
+    .howToTrainDragon1_scroll::after {
+        content: "Мультфильм | 93м \A| 2010 год";
+        white-space: pre-wrap;
+    }
+
+    .howToTrainDragon2_scroll {
+    background-image: url("../Images_Material/How.to.train.your.dragon.2.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .howToTrainDragon2_scroll::before {
+        content: '"Как приручить дракона 2"';
+    }
+
+    .howToTrainDragon2_scroll::after {
+        content: "Мультфильм | 102м \A| 2014 год";
+        white-space: pre-wrap;
+    }
+
+    .howToTrainDragon3_scroll {
+    background-image: url("../Images_Material/How.to.train.your.dragon.3.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .howToTrainDragon3_scroll::before {
+        content: '"Как приручить дракона 3"';
+    }
+
+    .howToTrainDragon3_scroll::after {
+        content: "Мультфильм | 104м \A| 2019 год";
+        white-space: pre-wrap;
+    }
+
+    .journeyToTheCenterOfTheEarth_scroll {
+    background-image: url("../Images_Material/Journey.to.the.Center.of.the.Earth.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .journeyToTheCenterOfTheEarth_scroll::before {
+        content: '"Путешествие в\A центр Земли"';
+        white-space: pre-wrap;
+    }
+
+    .journeyToTheCenterOfTheEarth_scroll::after {
+        content: "Приключения | 93м \A| 2008 год";
+        white-space: pre-wrap;
+    }
+
+    .kungFuPanda1_scroll{
+    background-image: url("../Images_Material/Kung.Fu.Panda.1.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .kungFuPanda1_scroll::before {
+        content: '"Кунг-фу Панда 1"';
+        white-space: pre-wrap;
+    }
+
+    .kungFuPanda1_scroll::after {
+        content: "Приключения | 92м \A| 2008 год";
+        white-space: pre-wrap;
+    }
+
+    .kungFuPanda2_scroll{
+    background-image: url("../Images_Material/Kung.Fu.Panda.2.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .kungFuPanda2_scroll::before {
+        content: '"Кунг-фу Панда 2"';
+        white-space: pre-wrap;
+    }
+
+    .kungFuPanda2_scroll::after {
+        content: "Приключения | 92м \A| 2011 год";
+        white-space: pre-wrap;
+    }
+
+    .kungFuPanda3_scroll{
+    background-image: url("../Images_Material/Kung-Fu-Panda-3.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .kungFuPanda3_scroll::before {
+        content: '"Кунг-фу Панда 3"';
+        white-space: pre-wrap;
+    }
+
+    .kungFuPanda3_scroll::after {
+        content: "Приключения | 95м \A| 2016 год";
+        white-space: pre-wrap;
+    }
+
+    .legoNinjago_scroll{
+    background-image: url("../Images_Material/Lego.Ninjago.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .legoNinjago_scroll::before {
+        content: '"Лего Ниндзяго"';
+        white-space: pre-wrap;
+    }
+
+    .legoNinjago_scroll::after {
+        content: "Мультфильм | 101м \A| 2017 год";
+        white-space: pre-wrap;
+    }
+
+
+    .minions1_scroll{
+    background-image: url("../Images_Material/Minions.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .minions1_scroll::before {
+        content: '"Миньоны 1"';
+        white-space: pre-wrap;
+    }
+
+    .minions1_scroll::after {
+        content: "Мультфильм | 91м \A| 2015 год";
+        white-space: pre-wrap;
+    }
+
+    .missionImpossible3_scroll{
+    background-image: url("../Images_Material/Mission.Impossible.3.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .missionImpossible3_scroll::before {
+        content: '"Миссия\A невыполнима 3"';
+        white-space: pre-wrap;
+    }
+
+    .missionImpossible3_scroll::after {
+        content: "Экшн | 126м \A| 2006 год";
+        white-space: pre-wrap;
+    }
+
+    .missionImpossible4_scroll{
+    background-image: url("../Images_Material/Mission.Impossible.4.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .missionImpossible4_scroll::before {
+        content: '"Миссия\A невыполнима 4"';
+        white-space: pre-wrap;
+    }
+
+    .missionImpossible4_scroll::after {
+        content: "Экшн | 133м \A| 2011 год";
+        white-space: pre-wrap;
+    }
+
+    .missionImpossible5_scroll{
+    background-image: url("../Images_Material/Mission.Impossible.5.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .missionImpossible5_scroll::before {
+        content: '"Миссия\A невыполнима 5"';
+        white-space: pre-wrap;
+    }
+
+    .missionImpossible5_scroll::after {
+        content: "Экшн | 131м \A| 2015 год";
+        white-space: pre-wrap;
+    }
+
+    .moonFall_scroll{
+    background-image: url("../Images_Material/Moonfall.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .moonFall_scroll::before {
+        content: '"Падение луны"';
+        white-space: pre-wrap;
+    }
+
+    .moonFall_scroll::after {
+        content: "Экшн | 130м \A| 2022 год";
+        white-space: pre-wrap;
+    }
+
+    .comingSoon_scroll{
+    background-image: url("../Images_Material/ComingSoon.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .comingSoon_scroll::before {
+        content: '"Скоро..."';
+        white-space: pre-wrap;
+    }
+
+    .comingSoon_scroll::after {
+        content: "Описание отсутствует";
+        white-space: pre-wrap;
+    }
+
+    .avatarKorra1_scroll{
+    background-image: url("../Images_Material/Legend.of.Korra.Season.1.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .avatarKorra1_scroll::before {
+        content: '"Аватар. Легенда\A о Корре 1"';
+        white-space: pre-wrap;
+    }
+
+    .avatarKorra1_scroll::after {
+        content: "Аниме | Все серии";
+        white-space: pre-wrap;
+    }
+
+    .avatarKorra2_scroll{
+    background-image: url("../Images_Material/Legend_Of_Korra_Season_2.jpg");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .avatarKorra2_scroll::before {
+        content: '"Аватар. Легенда\A о Корре 2"';
+        white-space: pre-wrap;
+    }
+
+    .avatarKorra2_scroll::after {
+        content: "Аниме | Все серии";
+        white-space: pre-wrap;
+    }
+
+    .avatarKorra3_scroll{
+    background-image: url("../Images_Material/Legend.of.Korra.Season.3.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .avatarKorra3_scroll::before {
+        content: '"Аватар. Легенда\A о Корре 3"';
+        white-space: pre-wrap;
+    }
+
+    .avatarKorra3_scroll::after {
+        content: "Аниме | Все серии";
+        white-space: pre-wrap;
+    }
+
+    .avatarKorra4_scroll{
+    background-image: url("../Images_Material/Legend.of.Korra.Season.4.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .avatarKorra4_scroll::before {
+        content: '"Аватар. Легенда\A о Корре 4"';
+        white-space: pre-wrap;
+    }
+
+    .avatarKorra4_scroll::after {
+        content: "Аниме | Все серии";
+        white-space: pre-wrap;
+    }
+
+    .NinjagoSeason4_scroll{
+    background-image: url("../Images_Material/Lego_Ninjago_Season_4.jpg");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .NinjagoSeason4_scroll::before {
+        content: '"Лего Ниндзяго\A 4 сезон"';
+        white-space: pre-wrap;
+    }
+
+    .NinjagoSeason4_scroll::after {
+        content: "Сериал | Все серии";
+        white-space: pre-wrap;
+    }
+
+    .NinjagoSeason5_scroll{
+    background-image: url("../Images_Material/Lego_Ninjago_Season_5.jpg");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .NinjagoSeason5_scroll::before {
+        content: '"Лего Ниндзяго\A 5 сезон"';
+        white-space: pre-wrap;
+    }
+
+    .NinjagoSeason5_scroll::after {
+        content: "Сериал | Все серии";
+        white-space: pre-wrap;
+    }
+
+    .NinjagoSeason11_scroll{
+    background-image: url("../Images_Material/Lego_Ninjago_Season_11.jpg");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .NinjagoSeason11_scroll::before {
+        content: '"Лего Ниндзяго\A 11 сезон"';
+        white-space: pre-wrap;
+    }
+
+    .NinjagoSeason11_scroll::after {
+        content: "Сериал | Все серии";
+        white-space: pre-wrap;
+    }
+
+    .NinjagoSeason16_scroll{
+    background-image: url("../Images_Material/Lego_Ninjago_Season_16.webp");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .NinjagoSeason16_scroll::before {
+        content: '"Лего Ниндзяго\A 16 сезон"';
+        white-space: pre-wrap;
+    }
+
+    .NinjagoSeason16_scroll::after {
+        content: "Сериал | Все серии";
+        white-space: pre-wrap;
+    }
+
+    .gladiator1_scroll{
+    background-image: url("../Images_Material/Gladiator_1.jpg");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .gladiator1_scroll::before {
+        content: '"Гладиатор 1"';
+        white-space: pre-wrap;
+    }
+
+    .gladiator1_scroll::after {
+        content: "Экшн | 155м \A| 2000 год";
+        white-space: pre-wrap;
+    }
+
+    .moana1_scroll{
+    background-image: url("../Images_Material/Moana_1.jpg");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .moana1_scroll::before {
+        content: '"Моана 1"';
+        white-space: pre-wrap;
+    }
+
+    .moana1_scroll::after {
+        content: "Приключения | 107м \A| 2016 год";
+        white-space: pre-wrap;
+    }
+
+    .transformers2007_scroll{
+    background-image: url("../Images_Material/Transformers_2007.jpg");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .transformers2007_scroll::before {
+        content: '"Трансформеры 2007"';
+        white-space: pre-wrap;
+    }
+
+    .transformers2007_scroll::after {
+        content: "Экшн | 144м \A| 2007 год";
+        white-space: pre-wrap;
+    }
+
+    .mazeRunner1_scroll{
+    background-image: url("../Images_Material/The.Maze.Runner.1.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .mazeRunner1_scroll::before {
+        content: '"Бегущий в\A лабиринте 1"';
+        white-space: pre-wrap;
+    }
+
+    .mazeRunner1_scroll::after {
+        content: "Экшн | 113м \A| 2009 год";
+        white-space: pre-wrap;
+    }
+
+    .mazeRunner3_scroll{
+    background-image: url("../Images_Material/The.Maze.Runner.3.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .mazeRunner3_scroll::before {
+        content: '"Бегущий в\A лабиринте 3"';
+        white-space: pre-wrap;
+    }
+
+    .mazeRunner3_scroll::after {
+        content: "Экшн | 144м \A| 2018 год";
+        white-space: pre-wrap;
+    }
+
+    .whoami_scroll{
+    background-image: url("../Images_Material/Who_Am_I.webp");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .whoami_scroll::before {
+        content: '"Кто я"';
+        white-space: pre-wrap;
+    }
+
+    .whoami_scroll::after {
+        content: "Экшн | 102м \A| 2014 год";
+        white-space: pre-wrap;
+    }
+
+    .hacker_scroll{
+    background-image: url("../Images_Material/Hacker.jpg");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .hacker_scroll::before {
+        content: '"Хакер"';
+        white-space: pre-wrap;
+    }
+
+    .hacker_scroll::after {
+        content: "Экшн | 95м \A| 2016 год";
+        white-space: pre-wrap;
+    }
+
+    .passwordHouse_scroll{
+    background-image: url("../Images_Material/Password_House.webp");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .passwordHouse_scroll::before {
+        content: '"Пароль Хаус"';
+        white-space: pre-wrap;
+    }
+
+    .passwordHouse_scroll::after {
+        content: "Экшн | 105м \A| 2018 год";
+        white-space: pre-wrap;
+    }
+
+    .familyMovie_scroll{
+    background-image: url("../Images_Material/Family_Movie.webp");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .familyMovie_scroll::before {
+        content: '"От семьи не убежишь"';
+        white-space: pre-wrap;
+    }
+
+    .familyMovie_scroll::after {
+        content: "Приключения | 107м \A| 2018 год";
+        white-space: pre-wrap;
+    }
+
+    .Sing1_scroll{
+    background-image: url("../Images_Material/Sing.1.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .Sing1_scroll::before {
+        content: '"Пой 1"';
+        white-space: pre-wrap;
+    }
+
+    .Sing1_scroll::after {
+        content: "Мультфильм | 108м \A| 2016 год";
+        white-space: pre-wrap;
+    }
+
+    .Sing2_scroll{
+    background-image: url("../Images_Material/Sing.2.png");
+    background-position: center center; 
+    background-repeat: no-repeat;     
+    background-size: cover;
+    }
+
+    .Sing2_scroll::before {
+        content: '"Пой 2"';
+        white-space: pre-wrap;
+    }
+
+    .Sing2_scroll::after {
+        content: "Мульфильм | 110м \A| 2021 год";
+        white-space: pre-wrap;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        flex-direction: column;
+        background: rgb(31, 31, 31);
+        width: 100%;
+        height: 125px;
+        color: white;
+        text-align: center;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+        margin-top: 32px;
+    }
+
+    .footer p {
+        font-weight: 600;
+        color: white;
+    }
+
+    .github {
+        color: white;
+    }
+
+    .title {
+        position: relative;
+        margin-top: 95px;
+        margin-left: min(24px);
+        color: white;
+        padding: 18px;
+        font-size: 12px;
+    }
+
+    .title p {
+        margin-top: 12px;
+        color: rgb(202, 202, 202);
+        margin-bottom: 12px;
+    }
+
+    .title a {
+        color: rgb(202, 202, 202);
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .logo_title2 {
+        font-weight: 800;
+        animation-name: color;
+        animation-duration: 8s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        color: #ff00ff; /* starting color fallback */
+    }
+
+    @keyframes color {
+        0%   { color: #ff00ff; } /* magenta */
+        25%  { color: #00ffff; } /* cyan */
+        50%  { color: #00ff00; } /* lime */
+        75%  { color: #ffff00; } /* yellow */
+        100% { color: #ff00ff; } /* magenta again */
+    }
+
+
+    .arrow_up {
+        position: fixed;
+        background-color: #1b1b1b;
+        padding: 12px;
+        border-radius: 12px;
+        bottom: 95px;
+        right: 35px;
+        z-index: 8;
+        border: 1.5px solid whitesmoke;
+    }
+
+    .arrow_up:hover {
+        background-color: #3b3b3b;
+    }
+
+    .arrow_up {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+    }
+
+    .arrow_up.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .serie_selection {
+        margin: 24px 0px 24px 0px;
+        width: 100%;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .serie_selection h1{
+        color: white;
+        font-family: "Popins", sans-serif;
+        text-shadow: 0px 0px 7px #005eff;
+        animation-name: shadow;
+        animation-timing-function: linear;
+        font-size: 48px;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+    }
+
+    .serie_selection h1, .serie_selection label, .serie_selection select{
+        color: white;
+        font-family: "Popins", sans-serif;
+    }
+
+    @keyframes shadow {
+        0%{ text-shadow: 0px 0px 7px #005eff; }
+        15%{ text-shadow: 0px 0px 7px #0026ff; }
+        25%{ text-shadow: 0px 0px 7px #8400ff; }
+        35%{ text-shadow: 0px 0px 7px #c300ff; }
+        50%{ text-shadow: 0px 0px 7px #e600ff; }
+
+        65%{ text-shadow: 0px 0px 7px #e600ff; }
+        75%{ text-shadow: 0px 0px 7px #c300ff; }
+        80%{ text-shadow: 0px 0px 7px #8400ff; }
+        95%{ text-shadow: 0px 0px 7px #0026ff; }
+        100%{ text-shadow: 0px 0px 7px #005eff; }
+    }
+
+    .serie_selection h1 {
+        margin-bottom: 8px;
+    }
+
+    .serie_selection select{
+        font-family: sans-serif;
+        font-size: 18px;
+        margin-top: 12px;
+        color: rgb(255, 255, 255);
+        background-color: #1b1b1b;
+        border: 1px solid whitesmoke;
+        border-radius: 8px;
+        padding: 6px;
+    }
+
+    .serie_selection option {
+        font-size: 14px;
+    }
+
+    .serie_selection label {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    @media only screen and (max-width: 925px) {
+        .nav_links {
+            display: none;
+        }
+
+        .menu {
+            display: block;
+        }
+
+        .scroll_track {
+            position: relative;
+            width: calc(185px * var(--animation_objects) + 100%); /* adjust for padding room */
+            height: 100%;
+        }
+
+        .movie {
+            font-size: 18px;
+            margin-bottom: 72px;
+        }
+
+        .movie::before,
+        .movie::after {
+            font-size: 14px;
+        }
+
+        .movies-section {
+            padding: 16px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .movie_player {
+            height: 400px;
+            margin-bottom: 12px;
+        }
+
+    @media only screen and (max-width: 1200px) {
+        .scroll_track {
+            position: relative;
+            width: calc(225px * var(--animation_objects) + 100%); /* adjust for padding room */
+            height: 100%;
+        }
+        
+        .movies-section {
+            flex-direction: column;
+            align-items: center;
+            padding: 24px;
+            justify-content: space-between;
+            margin-top: 0px;
+        }
+
+        .movie {
+            margin: 0 auto;
+        }
+
+        .movie_player {
+            margin: 48px 0 0 0;
+            max-width: 100%;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+    }}
+
+    @media only screen and (max-width: 500px)  {
+        .movie_player {
+            height: 200px;
+            margin-bottom: 12px;
+        }
+    }
+
+    @media only screen and (max-width: 1325px) {
+        .movie_player {
+            margin: 48px 0 0 0;
+            max-width: 100%;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    
+    <header class="nav">
+        <a href="#" class="logo_title">🎬 Кинофильм</a>
+
+        <div class="nav_links">
+            <a href="../index.html#action">Экшн</a>
+            <a href="../index.html#comedy">Приключения</a>
+            <a href="../index.html#animation">Мультфильмы</a>
+            <a href="../index.html#anime">Аниме</a>
+        </div>
+
+        <img class="menu" id="menu" src="../Images_Material/menu_icon.svg" alt="menu">
+    </header>
+
+    <div class="overlay_menu" id="overlay_menu"></div>
+
+    <div class="nav_mobile">
+        <div class="nav_links_mobile">
+            <a class="header_mobile_menu" href="#">Кинофильм</a>
+            <hr>
+            <a href="../index.html#action">Экшн</a>
+            <hr>
+            <a href="../index.html#comedy">Приключения</a>
+            <hr>
+            <a href="../index.html#animation">Мультфильмы</a>
+            <hr>
+            <a href="../index.html#anime">Аниме</a>
+            <hr>
+        </div>
+
+        <p>copyright © 2025 all rights reserved</p>
+    </div>
+
+    <div class="title">
+        <h1><span style="text-decoration: underline;" class="logo_title2">Кинофильм</span> личная библеотека фильмов.</h1>
+        <p>Просьба не делиться ссылкой и не распространять данный сайт,
+            так как контент является частным и <br>
+            предназначен только для личного использования.</p>
+        <a target="_blank" title="Политика и конфиденциальность" href="../Политика и конфиденциальность.txt">Политика и конфиденциальность</a>
+    </div>
+
+   <div style="height: 60px;"></div> <!-- Spacer -->
+
+    <div class="scroll_menu">
+        <div class="scroll_track">
+            <div data-link="../Movies_Directories\Cars_1.html" class="movie_scroll1 movie_scroll cars1_scroll"></div>
+            <div data-link="../Movies_Directories\Cars_2.html" class="movie_scroll2 movie_scroll cars2_scroll"></div>
+            <div data-link="../Movies_Directories\Cars_3.html" class="movie_scroll3 movie_scroll cars3_scroll"></div>
+            <div data-link="../Movies_Directories\How_To_Train_Yout_Dragon_1.html" class="movie_scroll4 movie_scroll howToTrainDragon1_scroll"></div>
+            <div data-link="../Movies_Directories\How_To_Train_Yout_Dragon_2.html" class="movie_scroll5 movie_scroll howToTrainDragon2_scroll"></div>
+            <div data-link="../Movies_Directories\How_To_Train_Yout_Dragon_3.html" class="movie_scroll6 movie_scroll howToTrainDragon3_scroll"></div>
+            <div data-link="../Movies_Directories\Journey_To_The_Center_Of_The_Earth.html" class="movie_scroll7 movie_scroll journeyToTheCenterOfTheEarth_scroll"></div>
+            <div data-link="../Movies_Directories\Kung_Fu_Panda_1.html" class="movie_scroll8 movie_scroll kungFuPanda1_scroll"></div>
+
+            <div data-link="../Movies_Directories\Kung_Fu_Panda_2.html" class="movie_scroll9 movie_scroll kungFuPanda2_scroll"></div>
+            <div data-link="../Movies_Directories\Kung_Fu_Panda_3.html" class="movie_scroll10 movie_scroll kungFuPanda3_scroll"></div>
+            <div data-link="../Movies_Directories\Lego_Ninjago_2017.html" class="movie_scroll11 movie_scroll legoNinjago_scroll"></div>
+            <div data-link="../Movies_Directories\Minions_1.html" class="movie_scroll12 movie_scroll minions1_scroll"></div>
+            <div data-link="../Movies_Directories\Mision_Impossible_3.html" class="movie_scroll13 movie_scroll missionImpossible3_scroll"></div>
+            <div data-link="../Movies_Directories\Mision_Impossible_4.html" class="movie_scroll14 movie_scroll missionImpossible4_scroll"></div>
+            <div data-link="../Movies_Directories\Mision_Impossible_5.html" class="movie_scroll15 movie_scroll missionImpossible5_scroll"></div>
+            <div data-link="../Movies_Directories\Moon_Fall.html" class="movie_scroll16 movie_scroll moonFall_scroll"></div>
+
+            <div data-link="../Movies_Directories\Ninjago_Season_4.html" class="movie_scroll17 movie_scroll NinjagoSeason4_scroll"></div>
+            <div data-link="../Movies_Directories\Ninjago_Season_5.html" class="movie_scroll18 movie_scroll NinjagoSeason5_scroll"></div>
+            <div data-link="../Movies_Directories\Ninjago_Season_11.html" class="movie_scroll19 movie_scroll NinjagoSeason11_scroll"></div>
+            <div data-link="../Movies_Directories\Ninjago_Season_16.html" class="movie_scroll20 movie_scroll NinjagoSeason16_scroll"></div>
+            <div data-link="../Movies_Directories\Avatar_Korra_1.html" class="movie_scroll21 movie_scroll avatarKorra1_scroll"></div>
+            <div data-link="../Movies_Directories\Avatar_Korra_2.html" class="movie_scroll22 movie_scroll avatarKorra2_scroll"></div>
+            <div data-link="../Movies_Directories\Avatar_Korra_3.html" class="movie_scroll23 movie_scroll avatarKorra3_scroll"></div>
+            <div data-link="../Movies_Directories\Avatar_Korra_4.html" class="movie_scroll24 movie_scroll avatarKorra4_scroll"></div>
+
+            <div data-link="../Movies_Directories\Transformers_2007.html" class="movie_scroll25 movie_scroll transformers2007_scroll"></div>
+            <div data-link="../Movies_Directories\Maze_Runner_1.html" class="movie_scroll26 movie_scroll mazeRunner1_scroll"></div>
+            <div data-link="../Movies_Directories\Maze_Runner_3.html" class="movie_scroll27 movie_scroll mazeRunner3_scroll"></div>
+            <div data-link="../Movies_Directories\Whoami.html" class="movie_scroll28 movie_scroll whoami_scroll"></div>
+            <div data-link="../Movies_Directories\Hacker.html" class="movie_scroll29 movie_scroll hacker_scroll"></div>
+            <div data-link="../Movies_Directories\Password_House.html" class="movie_scroll30 movie_scroll passwordHouse_scroll"></div>
+            <div data-link="../Movies_Directories\Moana_1.html" class="movie_scroll31 movie_scroll moana1_scroll"></div>
+            <div data-link="../Movies_Directories\Family_Movie.html" class="movie_scroll32 movie_scroll familyMovie_scroll"></div>
+
+            <div data-link="../Movies_Directories\Sing_1.html" class="movie_scroll33 movie_scroll Sing1_scroll"></div>
+            <div data-link="../Movies_Directories\Sing_2.html" class="movie_scroll34 movie_scroll Sing2_scroll"></div>
+        </div>
+    </div>
+
+    <div style="height: 60px;"></div> <!-- Spacer -->
+    <hr style="width: 90%; margin-left: 5%; mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 1) 80%,
+        rgba(0, 0, 0, 0)
+    ); box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);">
+
+    <div class="serie_selection">
+        <h1>Приятного просмотра!</h1>
+        <!-- <label for="serie">Выберите серию: </label>
+
+        <select id="serie">
+        <option value="Lego Ninjago 2007">Лего Ниндзяго 2017</option>
+
+        <option value="Lego Ninjago 2007">Лего Ниндзяго 2007</option>
+        <option value="Lego Ninjago 2007">Лего Ниндзяго 2007</option>
+        <option value="Lego Ninjago 2007">Лего Ниндзяго 2007</option>
+
+        </select> -->
+    </div>
+
+    <div class="movies-section">
+        <div class="movie familyMovie_scroll"></div>
+        <iframe class="movie_player" src="https://www.youtube.com/embed/qEI6xN6jNfs?si=dcYZSSXS3NMI18ie" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>  
+
+    <a href="#"><img class="arrow_up" src="../Images_Material/arrow_up.svg"/></a>
+
+    <footer class="footer">
+        <p style="color: red; margin-bottom: 5px;">Весь предоставленный<br> контент на русском языке</p>
+        <p>Copyright © 2025 all rights reserved</p>
+        <p><a title="github.com" class="github" href="https://github.com/" target="_blank">GitHub</a> directory / Кинофильм</p> 
+    </footer>
+
+    <script>
+        console.log("JavaScript was succesfully enabled");
+
+        const overlay_menu = document.querySelector(".overlay_menu");
+        const nav_mobile = document.querySelector(".nav_mobile");
+        const nav = document.querySelector(".nav");
+
+        const menu_button = document.querySelector(".menu");
+
+        overlay_menu.addEventListener("click", ()=>{
+            nav_mobile.classList.remove("appear");
+            overlay_menu.classList.remove("appear");
+        });
+
+        menu_button.addEventListener("click", ()=>{
+            nav_mobile.classList.add("appear");
+            overlay_menu.classList.add("appear");
+        });
+
+        // const cursorLight = document.getElementById("cursor_effect");
+        // let mouseX = 0, mouseY = 0;
+
+        // document.addEventListener("mousemove", (e) => {
+        //     mouseX = e.clientX;
+        //     mouseY = e.clientY;
+        // });
+
+        // function animateLight() {
+        //     cursorLight.style.left = `${mouseX}px`;
+        //     cursorLight.style.top = `${mouseY}px`;
+        //     requestAnimationFrame(animateLight);
+        // }
+
+        // animateLight();
+
+        const arrowUp = document.querySelector('.arrow_up');
+
+        window.addEventListener('scroll', () => { 
+            if (window.scrollY > 200) {
+                arrowUp.classList.add('show');
+            } else {
+                arrowUp.classList.remove('show');
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 25){
+                nav.classList.add("active");
+            } else {
+                nav.classList.remove("active");
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const items = document.querySelectorAll(".movie_scroll");
+
+            items.forEach((item) => {
+                item.addEventListener("mouseover", () => {
+                item.classList.add("active");
+                items.forEach((el) => {
+                    el.style.animationPlayState = "paused";
+                });
+                });
+
+                item.addEventListener("mouseleave", () => {
+                item.classList.remove("active");
+                items.forEach((el) => {
+                    el.style.animationPlayState = "running";
+                });
+                });
+            });
+        });
+
+        // Link for the movies
+        document.querySelectorAll(".movie_scroll").forEach((item) => {
+        item.addEventListener("click", () => {
+            const link = item.dataset.link;
+            if (link) {
+            window.location.href = link;
+            }
+        });
+        });
+
+    </script>
+</body>
+</html>
